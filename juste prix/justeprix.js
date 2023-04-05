@@ -5,13 +5,11 @@
 let numberToFind = 0;
 const resultDiv = document.getElementById("resultDiv");
 
+// Lancer la partie
+// Récupérer un chiffre aléatoire
 document.getElementById("beginGame").addEventListener("click", () => {
-  // Lancer la partie
-  // Récupérer un chiffre aléatoire
-  numberToFind = getRandomInt(1000);
-  alert(numberToFind)
+  numberToFind = getRandomInt(100);
 });
-
 
 document.getElementById("checkPropalButton").addEventListener("click", () => {
   checkPropal();
