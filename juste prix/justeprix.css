@@ -1,3 +1,45 @@
-* {
-  background-color: greenyellow;
+body {
+  background-color: aquamarine;
+  max-width: 500px;
+  margin: auto;
+}
+
+.rebourDiv {
+  transition: 0.2s;
+  font-size: 25px;
+}
+
+.rebourDiv.cool {
+  color: green;
+}
+
+.rebourDiv.warning {
+  color: coral;
+}
+
+.rebourDiv.danger {
+  color: red;
+  animation: suspens 2s infinite ease-in-out;
+}
+
+#gamePropalDiv {
+  display: none;
+}
+
+@keyframes suspens {
+  0%{
+    font-size: 25px;
+  }
+  25%{
+    font-size: 50px;
+  }
+  50%{
+    font-size: 25px;
+  }
+  75%{
+    font-size: 50px;
+  }
+  100%{
+    font-size: 25px;
+  }
 }

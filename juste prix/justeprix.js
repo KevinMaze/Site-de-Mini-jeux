@@ -4,11 +4,15 @@
 
 let numberToFind = 0;
 const resultDiv = document.getElementById("resultDiv");
+const rebourDiv = document.getElementById("couldown");
+const gamePropalDiv = document.getElementById("gamePropalDiv")
+let timeRest = 0;
+let countInterval = null;
 
 // Lancer la partie
 // Récupérer un chiffre aléatoire
 document.getElementById("beginGame").addEventListener("click", () => {
-  numberToFind = getRandomInt(100);
+  launchGame();
 });
 
 document.getElementById("checkPropalButton").addEventListener("click", () => {
@@ -42,4 +46,43 @@ function checkPropal(){
     let audio = new Audio("audio/oui.mp3");
     audio.play();
   }
+}
+
+function launchGame() {
+  numberToFind = getRandomInt(100);
+  timeRest = 30;
+  gamePropalDiv.style.display = "block";
+  if(countInterval != null) {
+    clearInterval(countInterval)
+  }
+  countInterval = setInterval(() => {
+    rebourDiv.innerText = `Il reste ${timeRest} seconde(s)`;
+    timeRest--;
+
+    if(timeRest >= 20) {
+      rebourDiv.classList.remove("danger")
+      rebourDiv.classList.remove("warning")
+      rebourDiv.classList.add("cool");
+    }
+    else if(timeRest > 10) {
+      rebourDiv.classList.remove("cool")
+      rebourDiv.classList.remove("danger")
+      rebourDiv.classList.add("warning")
+    }
+    else if(timeRest >= 0) {
+      rebourDiv.classList.remove("cool")
+      rebourDiv.classList.remove("warning")
+      rebourDiv.classList.add("danger")
+    }
+    else if(timeRest < 0) {
+      clearInterval(countInterval);
+      rebourDiv.innerText = "Time's Up !!"
+      // Partie terminer
+      endGame();
+    }
+  }, 1000);
+}
+
+function endGame() {
+  gamePropalDiv.style.display = "none"
 }
