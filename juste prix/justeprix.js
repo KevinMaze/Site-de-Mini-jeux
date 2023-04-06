@@ -1,6 +1,7 @@
 // Générer un chiffre en aléatoire
 // L'utilisateur fera des propositions
 // Continuer tant qu'il n'a pas la bonne proposition
+// import {confetti} from "../lib/confetti.js"
 
 let numberToFind = 0;
 const resultDiv = document.getElementById("resultDiv");
