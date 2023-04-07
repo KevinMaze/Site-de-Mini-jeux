@@ -1,7 +1,7 @@
 // Générer un chiffre en aléatoire
 // L'utilisateur fera des propositions
 // Continuer tant qu'il n'a pas la bonne proposition
-// import {confetti} from "../lib/confetti.js"
+import { confetti } from "./lib/confetti.js"
 
 let numberToFind = 0;
 const resultDiv = document.getElementById("resultDiv");
@@ -44,12 +44,12 @@ function checkPropal(){
   }
   else if (numberToFind == numberPropal){
     resultDiv.innerHTML = "YOU WIN !!!"
-    let audio = new Audio("audio/oui.mp3");
-    audio.play();
+    endGame(true);
   }
 }
 
 function launchGame() {
+  confetti.stopAnimationConfeti();
   numberToFind = getRandomInt(100);
   timeRest = 30;
   gamePropalDiv.style.display = "block";
@@ -79,11 +79,23 @@ function launchGame() {
       clearInterval(countInterval);
       rebourDiv.innerText = "Time's Up !!"
       // Partie terminer
-      endGame();
+      endGame(false);
     }
   }, 1000);
 }
 
-function endGame() {
+function endGame(gagner) {
+  if(gagner) {
+    confetti.launchAnimationConfetti();
+    let audio = new Audio("audio/oui.mp3");
+    audio.play();
+    setTimeout(() => {
+      confetti.stopAnimationConfeti();
+    }, 5000) 
+  }
+  else {
+    alert("C'est la piquette Jack, tu sais pas jouer Jack, t'es mauvais...")
+  }
   gamePropalDiv.style.display = "none"
+  clearInterval(countInterval);
 }

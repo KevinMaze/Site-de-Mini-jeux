@@ -7,9 +7,9 @@ export class confetti {
     for(let i = 0; i < 100; i++) {
       let confeti = document.createElement("div");
       confeti.classList.add("confetti");
-      confeti.style.left = getRandomArbitrary(0, 100)+'%';
+      confeti.style.left = this.getRandomArbitrary(0, 100)+'%';
       confeti.style.animationDelay = 50*i+"ms";
-      confeti.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0)
+      confeti.style.backgroundColor = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
       animateDiv.appendChild(confeti);
     }
     document.body.appendChild(animateDiv);
@@ -17,8 +17,10 @@ export class confetti {
 
     static stopAnimationConfeti() {
       let animateDiv = document.getElementById("allConfetti");
-      animateDiv.innerHTML = "";
-      animateDiv.remove();
+      if (animateDiv != undefined) {
+        animateDiv.innerHTML = "";
+        animateDiv.remove();
+      }
     }
 
     static getRandomArbitrary(min, max) {
