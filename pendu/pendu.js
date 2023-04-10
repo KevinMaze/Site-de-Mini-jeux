@@ -1,12 +1,14 @@
 // O Générer un mot aléa
-// - Afficher les lettres masquées  _ _ _ _ _
+// O Afficher les lettres masquées  _ _ _ _ _
 // - Pouvoir proposer des lettres
 // - Afficher les lettres trouvées
 // - Gérer un nb d'erreur max
+// - Afficher des lettres visible
 
 const allWords = ['Fleur', 'Montagne', 'Plastique', 'Puéricultrice', 'Congolexicomatisation', 'Explosion', 'Macaron', 'Voiture', 'Pissenlit', 'Biroute']
 const buttonPlay = document.getElementById("beginGame");
 const worldToFindDiv = document.getElementById("worldToFindDiv");
+const keyboardDiv = document.getElementById("keyboard");
 
 buttonPlay.addEventListener('click', function() {
   beginGame()
@@ -30,6 +32,33 @@ function beginGame(){
   });
   table.appendChild(line);
   worldToFindDiv.appendChild(table);
+  generateKeyboard();
+}
+
+function generateKeyboard(){
+  let alphabet = generateAlphabet();
+  alphabet.forEach(letter => {
+    let lettreDiv = document.createElement("div");
+    lettreDiv.innerHTML = letter;
+    lettreDiv.classList.add("letterKeyboard");
+    keyboardDiv.appendChild(lettreDiv);
+  });
+}
+
+function generateAlphabet(capital = false){
+  // return [...Array(26)].map((_,i) => String.fromCharCode(i + (capital ? 65 : 97)));
+  //                 |
+  // code développé  V
+  let tab = [];
+  let i = 65;
+  if(!capital){
+    i += 32;
+  }
+  let finish = i+26;
+  for (i; i<finish; i++) {
+      tab.push(String.fromCharCode(i))
+    }
+  return tab;
 }
 
 function generateWord(){

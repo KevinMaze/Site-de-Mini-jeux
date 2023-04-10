@@ -1,3 +1,26 @@
 body {
   background-color: antiquewhite;
 }
+
+main {
+  max-width: 500px;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+}
+
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#keyboard .letterKeyboard {
+  padding: 30px;
+  border: 1px solid rebeccapurple;
+  margin: 2px;
+}
