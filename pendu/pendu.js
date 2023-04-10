@@ -36,6 +36,7 @@ function beginGame(){
 }
 
 function generateKeyboard(){
+  keyboardDiv.innerHTML = '';
   let alphabet = generateAlphabet();
   alphabet.forEach(letter => {
     let lettreDiv = document.createElement("div");
@@ -69,5 +70,3 @@ function generateWord(){
 function getRandomInt(max){
   return Math.floor(Math.random() * max);
 }
-
-// VIDEO A 32:00
