@@ -6,10 +6,14 @@
 const reboursDiv = document.getElementById("minuteur")
 const calculDiv = document.getElementById("calcul")
 const propalInput = document.getElementById("resultPropal")
-const tempsMinuteurBase = 5
+const tempsMinuteurBase = 30
 let compteurInterval = null
 let tempsRestant = 0
 let calculEnCour = null
+
+document.getElementById("launchButton").addEventListener("click", () => {
+    launchGame()
+})
 
 document.getElementById("validePropal").addEventListener("click", () => {
     if(propalInput.value == calculEnCour.result) {
@@ -23,6 +27,7 @@ document.getElementById("validePropal").addEventListener("click", () => {
 
 function launchGame() {
     launchMinuteur(tempsMinuteurBase)
+    generateCalcul()
 }
 
 function generateCalcul() {
