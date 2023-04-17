@@ -6,37 +6,56 @@
 const reboursDiv = document.getElementById("minuteur")
 const calculDiv = document.getElementById("calcul")
 const propalInput = document.getElementById("resultPropal")
-const tempsMinuteurBase = 30
+const messengerDiv = document.getElementById("messenger")
+const allShowPlayingDiv = document.querySelectorAll('.showPlayingDiv')
+
+const tempsMinuteurBase = 10
 let compteurInterval = null
 let tempsRestant = 0
 let calculEnCour = null
+let cptGoodAnswer = 0
+let cptBadAnswer = 0
 
 document.getElementById("launchButton").addEventListener("click", () => {
     launchGame()
 })
 
 document.getElementById("validePropal").addEventListener("click", () => {
-    if(propalInput.value == calculEnCour.result) {
-        alert("bravo")
-    }
-    else {
-        alert("C'est non")
-    }
+    checkInputValue()
 })
 
-
-function launchGame() {
-    launchMinuteur(tempsMinuteurBase)
+function checkInputValue() {
+    if(propalInput.value == calculEnCour.result) {
+        messengerDiv.innerText = "Bravo, tu sais compter !"
+        cptGoodAnswer ++
+    }
+    else {
+        messengerDiv.innerText = `Tu sais pas compter Jack, t'es mauvais !! Résultat : ${calculEnCour.result}`
+        cptBadAnswer ++
+    }
+    propalInput.value = ""
     generateCalcul()
 }
 
+
+function launchGame() {
+    let cptGoodAnswer = 0
+    let cptBadAnswer = 0
+    launchMinuteur(tempsMinuteurBase)
+    generateCalcul()
+    displayPlayingDiv(true)
+    propalInput.value = ""
+    messengerDiv.innerHTML = ""
+}
+
 function generateCalcul() {
-    calculEnCour = new Calcul(500)
+    calculEnCour = new Calcul(100)
     calculDiv.innerText = calculEnCour.showCalcul
 
 }
 
 function launchMinuteur(tempsMinuteurBase) {
+    clearInterval(compteurInterval)
     tempsRestant = tempsMinuteurBase
     reboursDiv.innerText = tempsRestant
     compteurInterval = setInterval(() => {
@@ -45,9 +64,21 @@ function launchMinuteur(tempsMinuteurBase) {
         reboursDiv.innerText = tempsRestant;
         if(tempsRestant == 0){
             clearInterval(compteurInterval)
-            alert("fini")
+            displayPlayingDiv(false)
+            messengerDiv.innerHTML = `Bonne(s) réponse(s) : ${cptGoodAnswer} <br>`
+            messengerDiv.innerHTML += `Mauvaise(s) réponse(s) : ${cptBadAnswer}`
         }
     }, 1000);
+}
+
+function displayPlayingDiv(show){
+    let displayProperty = "none"
+    if(show){
+        displayProperty = "block"
+    }
+    allShowPlayingDiv.forEach(element => {
+        element.style.display = displayProperty
+    })
 }
 
 class Calcul {
@@ -85,3 +116,6 @@ class Calcul {
         return Math.floor(Math.random() * max)
     }
 }
+
+
+// séance 6 40min35
