@@ -20,11 +20,11 @@ document.getElementById("checkPropalButton").addEventListener("click", () => {
   checkPropal();
 });
 
-// document.getElementById("userPropalInput").addEventListener("keyup", function(event){
-//   if (event.key == "Enter"){
-//     checkPropal();
-//   }
-// });
+document.getElementById("userPropalIntput").addEventListener("keyup", function (event){
+  if (event.key == "Enter"){
+    checkPropal();
+  }
+});
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
