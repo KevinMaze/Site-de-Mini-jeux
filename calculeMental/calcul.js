@@ -145,6 +145,3 @@ class Calcul {
         return Math.floor(Math.random() * max)
     }
 }
-
-
-// séance 6 40min35
