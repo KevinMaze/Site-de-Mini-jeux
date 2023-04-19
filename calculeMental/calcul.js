@@ -8,13 +8,17 @@ const calculDiv = document.getElementById("calcul")
 const propalInput = document.getElementById("resultPropal")
 const messengerDiv = document.getElementById("messenger")
 const allShowPlayingDiv = document.querySelectorAll('.showPlayingDiv')
+const nbSecondsGameInput = document.getElementById("nbSecondsGame")
+const maxNumberCalcInput = document.getElementById("maxNumberCalc")
 
-const tempsMinuteurBase = 10
+let tempsMinuteurBase = 20 // Parametrable
+let maxCalculNumber = 20 // Parametrable
 let compteurInterval = null
 let tempsRestant = 0
 let calculEnCour = null
 let cptGoodAnswer = 0
 let cptBadAnswer = 0
+let allCalculRecap = ''
 
 document.getElementById("launchButton").addEventListener("click", () => {
     launchGame()
@@ -24,14 +28,22 @@ document.getElementById("validePropal").addEventListener("click", () => {
     checkInputValue()
 })
 
+propalInput.addEventListener("keyup", event => {
+    if(event.key == "Enter"){
+        checkInputValue()
+    }
+})
+
 function checkInputValue() {
     if(propalInput.value == calculEnCour.result) {
         messengerDiv.innerText = "Bravo, tu sais compter !"
         cptGoodAnswer ++
+        allCalculRecap += `${calculEnCour.showCalculWithResult} | <span class="goodAnswer">${propalInput.value}</span> <br>`
     }
     else {
-        messengerDiv.innerText = `Tu sais pas compter Jack, t'es mauvais !! Résultat : ${calculEnCour.result}`
+        messengerDiv.innerText = `Tu sais pas compter Jack, t'es mauvais !! Résultat : ${calculEnCour.showCalculWithresult}`
         cptBadAnswer ++
+        allCalculRecap += `${calculEnCour.showCalculWithResult} | <span class="badAnswer">${propalInput.value}</span> <br>`
     }
     propalInput.value = ""
     generateCalcul()
@@ -39,8 +51,16 @@ function checkInputValue() {
 
 
 function launchGame() {
-    let cptGoodAnswer = 0
-    let cptBadAnswer = 0
+    if(nbSecondsGameInput.value != undefined){
+        tempsMinuteurBase = nbSecondsGameInput.value
+    }
+    if(maxNumberCalcInput.value != undefined){
+        maxCalculNumber = maxNumberCalcInput.value
+    }
+    allCalculRecap = ''
+    cptGoodAnswer = 0
+    cptBadAnswer = 0
+    messengerDiv.innerHTML = ''
     launchMinuteur(tempsMinuteurBase)
     generateCalcul()
     displayPlayingDiv(true)
@@ -49,7 +69,7 @@ function launchGame() {
 }
 
 function generateCalcul() {
-    calculEnCour = new Calcul(100)
+    calculEnCour = new Calcul(maxCalculNumber)
     calculDiv.innerText = calculEnCour.showCalcul
 
 }
@@ -66,7 +86,10 @@ function launchMinuteur(tempsMinuteurBase) {
             clearInterval(compteurInterval)
             displayPlayingDiv(false)
             messengerDiv.innerHTML = `Bonne(s) réponse(s) : ${cptGoodAnswer} <br>`
-            messengerDiv.innerHTML += `Mauvaise(s) réponse(s) : ${cptBadAnswer}`
+            messengerDiv.innerHTML += `Mauvaise(s) réponse(s) : ${cptBadAnswer} <br>`
+            let totalQuestion = cptBadAnswer + cptGoodAnswer
+            messengerDiv.innerHTML += `Ratio : ${Math.round((100 * cptGoodAnswer) / totalQuestion)} % de bonne réponse <br>`
+            messengerDiv.innerHTML += allCalculRecap
         }
     }, 1000);
 }
@@ -100,6 +123,12 @@ class Calcul {
     get showCalcul() {
         return `${this.number1} ${this.operator} ${this.number2}`
     }
+
+    get showCalculWithResult(){
+        return `${this.showCalcul} = ${this.result}`
+    }
+
+
     // get result() {
     //     if(this.operator == '-') {
     //         return this.number1 - this.number2
