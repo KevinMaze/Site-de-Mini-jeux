@@ -24,7 +24,6 @@ function beginGame(){
   cptErreur.innerHTML = 0;
   worldToFindDiv.innerHTML = " "
   wordToFind = generateWord();
-  // worldToFindDiv.innerHTML = wordToFind;
   wordToFindArray = Array.from(wordToFind);
 
   let table = document.createElement("table");
