@@ -19,31 +19,51 @@ document.getElementById("start").addEventListener("click", () => {
 
 function launchGame(){
   setAleaColorTab()
+  console.log(colorTabToFind)
   allSelectDiv.innerHTML = ""
   generateLigneSelect()
-  // console.log(colorTabToFind)
 }
 
 function checkProposition(){
   let allSelect = allSelectDiv.querySelectorAll("select")
-  let propal = Array.from(allSelect, select => select.value).slice(-4)
-  console.log(propal)
+  let propal = Array.from(allSelect, select => select.value).slice(0-nbColorToFind)
+
 
   let cptGoodPlace = 0
   let cptBadPlace = 0
-// parcours le tableau de proposition
+  let colorTabToFindCopy = [...colorTabToFind] // fait une copie du tableau
+// parcours le tableau de proposition, pour véritier les propositions bien placés
   for (let i = 0; i < propal.length; i++) {
     // on compare les couleur
-    if(propal[i] == colorTabToFind[i]){
+    if(propal[i] == colorTabToFindCopy[i]){
       // la proposition est bonne (bonne couleur au bon endroit)
       cptGoodPlace++
+      colorTabToFindCopy[i] = "trouvé"
+      propal[i] = "trouvéCotéPropal"
     }
-    
   }
+
+// parcours le tableau de proposition, pour vérifier les éléments de la bonne couleur mal placés
+  for (let i = 0; i < propal.length; i++) {
+    // on compare les couleur dans le tableau masqué, au même endroit
+    if(propal[i] != "trouvéCotéPropal"){
+      let finded = false
+      for (let j = 0; j < colorTabToFindCopy.length; j++) {
+        if(!finded){
+          if(propal[i] == colorTabToFindCopy[j]){
+            cptBadPlace ++
+            propal[i] = "trouvéCotéPropal"
+            colorTabToFindCopy[j] = "trouvé"
+            finded = true
+            }
+          }
+        }
+      }
+    }
 
 // ajout de la ligne de message de points
   let lineResponse = document.createElement("div")
-  lineResponse.innerText = "Couleur(s) bien placées" + cptGoodPlace
+  lineResponse.innerText = `Bien placé : ${cptGoodPlace} | Mal placé : ${cptBadPlace}` 
   allSelectDiv.appendChild(lineResponse)
 
   // si on a autant de bonne réponse que de case dans tableau = win
@@ -55,7 +75,6 @@ function checkProposition(){
       confetti.stopAnimationConfeti();
     }, 5000)
   }
-
   // on génère des nouveaux select
   generateLigneSelect()
 }
@@ -102,12 +121,6 @@ function getAleaColors(){
   return aleaColors
 }
 
-
-
-
-
-
-// reste 34:41 min séance 8
 
 
 
