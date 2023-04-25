@@ -11,7 +11,7 @@ select option {
 }
 
 select option:hover {
-  pointer-events: none;
+  color: transparent;
 }
 
 /* enlever couleur de selection hover */
