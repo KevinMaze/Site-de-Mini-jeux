@@ -101,11 +101,15 @@ function generateSelect(target){
   colors.forEach(color => {
     // création élément option
     let colorOption = document.createElement("option")
-    colorOption.innerHTML = color
+    // colorOption.innerHTML = color
     colorOption.value = color
     colorOption.style.backgroundColor = color
     mySelect.appendChild(colorOption)
   });
+  mySelect.addEventListener("change", (e) => {
+    e.target.style.backgroundColor = e.target.value
+  })
+  mySelect.style.backgroundColor = mySelect.value
   target.appendChild(mySelect)
 }
 

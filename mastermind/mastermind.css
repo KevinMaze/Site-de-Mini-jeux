@@ -1,0 +1,17 @@
+select {
+  width: 50px;
+  height: 50px;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+select option {
+  zoom: 2;
+}
+
+select option:hover {
+  pointer-events: none;
+}
+
+/* enlever couleur de selection hover */
