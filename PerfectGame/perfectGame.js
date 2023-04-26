@@ -10,7 +10,7 @@ import { Utils } from "../juste prix/lib/utils.js"
 
 const plateau = document.getElementById('cardsPlateau')
 
-generateCards(6)
+generateCards(24)
 
 // Générer des cartes aléatoirement
 function generateCards(nbCards){

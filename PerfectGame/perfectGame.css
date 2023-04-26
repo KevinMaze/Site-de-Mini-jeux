@@ -5,26 +5,103 @@
 }
 
 .perso {
-  background: url('./img/sprite-perso.png');
+  background: url("./img/sprite-perso.png");
   width: 70px;
   height: 70px;
 }
 
 .perso.perso1 {
-  background-position: 0px 0px;
+  background-position: 84px 68px;
 }
+
 .perso.perso2 {
-  background-position: 70px 0px;
+  background-position: 168px 68px;
 }
+
 .perso.perso3 {
-  background-position: 160px 0px;
+  background-position: 252px 68px;
 }
+
 .perso.perso4 {
-  background-position: 245px 0px;
+  background-position: 336px 68px;
 }
+
 .perso.perso5 {
-  background-position: 330px 0px;
+  background-position: 420px 68px;
 }
+
 .perso.perso6 {
-  background-position: 415px 0px;
+  background-position: 504px 68px;
 }
+
+.perso.perso7 {
+  background-position: 588px 136px;
+}
+
+.perso.perso8 {
+  background-position: 672px 136px;
+}
+
+.perso.perso9 {
+  background-position: 756px 136px;
+}
+
+.perso.perso10 {
+  background-position: 840px 136px;
+}
+
+.perso.perso11 {
+  background-position: 924px 136px;
+}
+
+.perso.perso12 {
+  background-position: 1008px 136px;
+}
+
+.perso.perso13 {
+  background-position: 1092px 204px;
+}
+
+.perso.perso14 {
+  background-position: 1176px 204px;
+}
+
+.perso.perso15 {
+  background-position: 1260px 204px;
+}
+
+.perso.perso16 {
+  background-position: 1344px 204px;
+}
+
+.perso.perso17 {
+  background-position: 1428px 204px;
+}
+
+.perso.perso18 {
+  background-position: 1512px 204px;
+}
+
+.perso.perso19 {
+  background-position: 1596px 272px;
+}
+
+.perso.perso20 {
+  background-position: 1680px 272px;
+}
+
+.perso.perso21 {
+  background-position: 1764px 272px;
+}
+
+.perso.perso22 {
+  background-position: 1848px 272px;
+}
+
+.perso.perso23 {
+  background-position: 1932px 272px;
+}
+
+.perso.perso24 {
+  background-position: 2016px 272px;
+}/*# sourceMappingURL=perfectGame.css.map */

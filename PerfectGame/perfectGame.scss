@@ -1,0 +1,41 @@
+@use 'sass:math';
+
+#cardsPlateau {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.perso {
+    background: url('./img/sprite-perso.png');
+    width: 70px;
+    height: 70px;
+  }
+
+  @for $i from 1 through 24 {
+    .perso {
+      &.perso#{$i}{
+        $left: $i*84px;
+        $top: math.ceil(calc($i/6)) * 68px;
+        background-position: $left $top;
+      }
+    }
+  }
+
+// .perso.perso1 {
+//   background-position: 0px 0px;
+// }
+// .perso.perso2 {
+//   background-position: 70px 0px;
+// }
+// .perso.perso3 {
+//   background-position: 160px 0px;
+// }
+// .perso.perso4 {
+//   background-position: 245px 0px;
+// }
+// .perso.perso5 {
+//   background-position: 330px 0px;
+// }
+// .perso.perso6 {
+//   background-position: 415px 0px;
+// }
