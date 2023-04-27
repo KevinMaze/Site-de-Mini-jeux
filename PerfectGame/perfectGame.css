@@ -4,104 +4,339 @@
   justify-content: center;
 }
 
-.perso {
-  background: url("./img/sprite-perso.png");
+#elemenToFind {
   width: 70px;
   height: 70px;
 }
 
-.perso.perso1 {
-  background-position: 84px 68px;
+.perso {
+  background: url("./img/sprite-perso.png");
+  width: 70px;
+  height: 70px;
+  margin-top: 70px;
 }
-
-.perso.perso2 {
-  background-position: 168px 68px;
+.perso.perso.perso0 {
+  background-position: 0px 0px;
 }
-
-.perso.perso3 {
-  background-position: 252px 68px;
+.perso.perso.perso0.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
 }
-
-.perso.perso4 {
-  background-position: 336px 68px;
+.perso.perso.perso0.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
 }
-
-.perso.perso5 {
-  background-position: 420px 68px;
+.perso.perso.perso1 {
+  background-position: 83.4px 76px;
 }
-
-.perso.perso6 {
-  background-position: 504px 68px;
+.perso.perso.perso1.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
 }
-
-.perso.perso7 {
-  background-position: 588px 136px;
+.perso.perso.perso1.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
 }
-
-.perso.perso8 {
-  background-position: 672px 136px;
+.perso.perso.perso2 {
+  background-position: 166.8px 76px;
 }
-
-.perso.perso9 {
-  background-position: 756px 136px;
+.perso.perso.perso2.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
 }
-
-.perso.perso10 {
-  background-position: 840px 136px;
+.perso.perso.perso2.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
 }
-
-.perso.perso11 {
-  background-position: 924px 136px;
+.perso.perso.perso3 {
+  background-position: 250.2px 76px;
 }
-
-.perso.perso12 {
-  background-position: 1008px 136px;
+.perso.perso.perso3.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
 }
-
-.perso.perso13 {
-  background-position: 1092px 204px;
+.perso.perso.perso3.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
 }
-
-.perso.perso14 {
-  background-position: 1176px 204px;
+.perso.perso.perso4 {
+  background-position: 333.6px 76px;
 }
-
-.perso.perso15 {
-  background-position: 1260px 204px;
+.perso.perso.perso4.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
 }
-
-.perso.perso16 {
-  background-position: 1344px 204px;
+.perso.perso.perso4.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
 }
-
-.perso.perso17 {
-  background-position: 1428px 204px;
+.perso.perso.perso5 {
+  background-position: 417px 76px;
 }
-
-.perso.perso18 {
-  background-position: 1512px 204px;
+.perso.perso.perso5.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
 }
-
-.perso.perso19 {
-  background-position: 1596px 272px;
+.perso.perso.perso5.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
 }
-
-.perso.perso20 {
-  background-position: 1680px 272px;
+.perso.perso.perso6 {
+  background-position: 500.4px 76px;
 }
-
-.perso.perso21 {
-  background-position: 1764px 272px;
+.perso.perso.perso6.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
 }
-
-.perso.perso22 {
-  background-position: 1848px 272px;
+.perso.perso.perso6.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
 }
-
-.perso.perso23 {
-  background-position: 1932px 272px;
+.perso.perso.perso7 {
+  background-position: 583.8px 152px;
 }
-
-.perso.perso24 {
-  background-position: 2016px 272px;
+.perso.perso.perso7.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso7.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso8 {
+  background-position: 667.2px 152px;
+}
+.perso.perso.perso8.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso8.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso9 {
+  background-position: 750.6px 152px;
+}
+.perso.perso.perso9.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso9.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso10 {
+  background-position: 834px 152px;
+}
+.perso.perso.perso10.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso10.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso11 {
+  background-position: 917.4px 152px;
+}
+.perso.perso.perso11.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso11.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso12 {
+  background-position: 1000.8px 152px;
+}
+.perso.perso.perso12.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso12.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso13 {
+  background-position: 1084.2px 228px;
+}
+.perso.perso.perso13.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso13.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso14 {
+  background-position: 1167.6px 228px;
+}
+.perso.perso.perso14.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso14.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso15 {
+  background-position: 1251px 228px;
+}
+.perso.perso.perso15.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso15.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso16 {
+  background-position: 1334.4px 228px;
+}
+.perso.perso.perso16.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso16.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso17 {
+  background-position: 1417.8px 228px;
+}
+.perso.perso.perso17.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso17.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso18 {
+  background-position: 1501.2px 228px;
+}
+.perso.perso.perso18.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso18.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso19 {
+  background-position: 1584.6px 304px;
+}
+.perso.perso.perso19.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso19.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso20 {
+  background-position: 1668px 304px;
+}
+.perso.perso.perso20.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso20.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso21 {
+  background-position: 1751.4px 304px;
+}
+.perso.perso.perso21.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso21.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso22 {
+  background-position: 1834.8px 304px;
+}
+.perso.perso.perso22.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso22.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso23 {
+  background-position: 1918.2px 304px;
+}
+.perso.perso.perso23.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso23.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
+}
+.perso.perso.perso24 {
+  background-position: 2001.6px 304px;
+}
+.perso.perso.perso24.hidden {
+  background: url("../PerfectGame/img/interogation.jpg");
+  background-size: 70px 70px;
+  border-radius: 50%;
+  background-position: 0 0;
+}
+.perso.perso.perso24.hidden:hover {
+  cursor: pointer;
+  border: 5px solid black;
 }/*# sourceMappingURL=perfectGame.css.map */

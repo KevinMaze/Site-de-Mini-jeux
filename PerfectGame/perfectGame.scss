@@ -5,21 +5,39 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-.perso {
-    background: url('./img/sprite-perso.png');
-    width: 70px;
-    height: 70px;
-  }
 
-  @for $i from 1 through 24 {
-    .perso {
-      &.perso#{$i}{
-        $left: $i*84px;
-        $top: math.ceil(calc($i/6)) * 68px;
+#elemenToFind{
+  width: 70px;
+  height: 70px;
+}
+
+.perso {
+  background: url('./img/sprite-perso.png');
+  width: 70px;
+  height: 70px;
+  margin-top: 70px;
+
+  @for $i from 0 through 24 {
+      &.perso.perso#{$i}{
+        $left: $i*83.4px;
+        $top: math.ceil(calc($i/6)) * 76px;
         background-position: $left $top;
+  
+        &.hidden{
+          background: url('../PerfectGame/img/interogation.jpg');
+          background-size: 70px 70px;
+          border-radius: 50%;
+          background-position: 0 0;
+
+          &:hover{
+            cursor: pointer;
+            border: 5px solid black;
+          }
+        }
       }
-    }
   }
+}
+
 
 // .perso.perso1 {
 //   background-position: 0px 0px;
