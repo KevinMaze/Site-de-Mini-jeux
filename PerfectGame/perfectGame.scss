@@ -6,16 +6,22 @@
   justify-content: center;
 }
 
-#elemenToFind{
-  width: 70px;
-  height: 70px;
+#elementToFind {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 5px green solid;
+  margin-bottom: 15px;
+  .perso{
+    margin: auto;
+  }
 }
 
 .perso {
   background: url('./img/sprite-perso.png');
   width: 70px;
   height: 70px;
-  margin-top: 70px;
+  margin: 10px;
 
   @for $i from 0 through 24 {
       &.perso.perso#{$i}{

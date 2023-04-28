@@ -13,36 +13,58 @@ const plateau = document.getElementById('cardsPlateau')
 const elementToFindDiv = document.getElementById('elementToFind')
 const nbCardsParam = 6
 const codeError = document.getElementById('codeErrorDiv')
+const scoreDiv = document.getElementById('nbScoreDiv')
+let nbTourGagne = 0
 let classCardToFind
 
 
-newTour()
+
+document.getElementById('button').addEventListener('click', () => {
+  launchGame()
+})
+
+
+function launchGame(){
+  nbTourGagne = 0
+  newTour()
+}
+
 
 function newTour(){
+  scoreDiv.innerText = nbTourGagne
+  codeError.innerHTML = ''
   plateau.innerHTML = ''
   elementToFindDiv.innerHTML = ''
   generateCards(nbCardsParam)
   let nbCardToFind = Utils.getRandomInt(nbCardsParam)
   let cardsPlateau = plateau.querySelectorAll('.perso')
   classCardToFind = cardsPlateau[nbCardToFind].classList
-
   setTimeout(() => {
     let allCards = document.querySelectorAll('.perso')
     allCards.forEach(card => {
       card.classList.add('hidden')
-      card.addEventListener('click', (e) => {
-        if(classCardToFind.value == card.classList.value){
-          card.classList.remove('hidden')
-          setTimeout(() => {
-            newTour()
-          }, 3000)
-          
-        }
-        else {
-          codeError.innerHTML = 'Perdu'
+      card.addEventListener('click', function clickOnCard() {
+        if(card.classList.contains('hidden')){
+          if(classCardToFind.value == card.classList.value){
+            card.classList.remove('hidden')
+            codeError.innerHTML = 'Gagné'
+            nbTourGagne++
+            setTimeout(() => {
+              newTour()
+            }, 3000)
+          }
+          else{
+            allCards.forEach(cardWhenLoose => {
+              codeError.innerHTML = "Perdu"
+              cardWhenLoose.classList.remove('hidden')
+              cardWhenLoose.removeEventListener('click', clickOnCard)
+            })
+          }
         }
       })
     })
+
+
     let newCardToFind = document.createElement('div')
     newCardToFind.classList = classCardToFind
     newCardToFind.classList.remove('hidden')
@@ -64,7 +86,3 @@ function generateCards(nbCards){
     plateau.appendChild(newCard)
   }
 }
-
-
-
-// reste 16:19m séance 11

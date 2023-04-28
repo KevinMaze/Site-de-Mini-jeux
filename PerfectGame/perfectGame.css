@@ -4,16 +4,22 @@
   justify-content: center;
 }
 
-#elemenToFind {
-  width: 70px;
-  height: 70px;
+#elementToFind {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 5px green solid;
+  margin-bottom: 15px;
+}
+#elementToFind .perso {
+  margin: auto;
 }
 
 .perso {
   background: url("./img/sprite-perso.png");
   width: 70px;
   height: 70px;
-  margin-top: 70px;
+  margin: 10px;
 }
 .perso.perso.perso0 {
   background-position: 0px 0px;
