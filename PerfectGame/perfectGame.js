@@ -3,9 +3,9 @@
 // Générer carte aléa   OK
 // Laisser carte visible pendant 5s  OK
 // Choisir une carte au hasard parmis les cartes tirées   OK
-// Laisser 3s au joueur pour choisir les cartes
-// Si gagner => recommencer le tour
-// Si perdu => fin de la partie
+// Laisser 3s au joueur pour choisir les cartes OK
+// Si gagner => recommencer le tour OK
+// Si perdu => fin de la partie OK
 // Sauvegarder le score en cookie
 import { Utils } from "../juste prix/lib/utils.js"
 

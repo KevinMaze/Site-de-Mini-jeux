@@ -5,6 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./perfectGame.css">
+  <link rel="stylesheet" href="../lib/btnHover/btnHover.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap" rel="stylesheet">
   <title>Perfect Game</title>
 </head>
 <body>
@@ -16,21 +20,21 @@
   <a href="../mastermind/mastermin.html">Master Mind (en cour)</a>
 
 
-  <h1>Le Perfect Game</h1>
+  <h1>PERFECT GAME</h1>
 
-  <button id="button">Nouvelle Partie</button>
-
-  <div>
-    Votre score : <span  id="nbScoreDiv"></span>
+  <div class="center">
+    <button type="button" id="button" class="glow-on-hover button">NOUVELLE PARTIE</button>
+    
+    <div class="score">
+      Votre score : <span  id="nbScoreDiv"></span>
+    </div>
+    
+    <div id="elementToFind"></div>
+    
+    <div id="cardsPlateau"></div>
+    
+    <div id="codeErrorDiv" class="error"></div>
   </div>
-
-  
-  <div id="elementToFind"></div>
-  
-  <div id="cardsPlateau"></div>
-
-  <div id="codeErrorDiv"></div>
-
   
 
 
