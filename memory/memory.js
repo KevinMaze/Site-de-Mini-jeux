@@ -1,8 +1,9 @@
 // import { Utils } from "../juste prix/lib/utils.js"
 
+let jeuTableau
 let allCards = document.querySelectorAll('.card')
 let cptClickCurrent = 0
-let dataImageShowed = ''
+let dataImageShowed
 
 allCards.forEach(card => {
   card.addEventListener('click', () =>{
