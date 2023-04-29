@@ -27,3 +27,7 @@ body{
 .card.hidden{
   background-color: green;
 }
+
+.card.finded{
+  color: yellow;
+}
