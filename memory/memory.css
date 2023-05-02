@@ -4,7 +4,7 @@ body{
 
 #gameBoard {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(3,1fr);
   gap: 10px;
   max-width: 500px;
   margin: auto;
@@ -34,7 +34,7 @@ body{
 
 .card.hidden{
   transform: rotateY(180deg);
-  background-image: url('./assets/verso.png');
+  background-image: url('./assets/back.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
