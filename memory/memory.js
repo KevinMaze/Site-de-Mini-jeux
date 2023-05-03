@@ -1,6 +1,10 @@
+import { confetti } from '../juste prix/lib/confetti.js'
+
 let jeuTableau
 let cptClickCurrent = 0
 let cardClickedId
+let nbPaireOnGame
+let cptCardFound = 0
 const cards = ['king', 'queen', 'valet', 'as']
 const gameBoard = document.getElementById('gameBoard')
 
@@ -52,17 +56,23 @@ function clickOnCardEvent(card){
           }
           else if(!card.classList.contains('finded')){
             card.classList.add('finded')
+            cptCardFound++
           }
         })
       }
       cptClickCurrent = 0
       cardClickedId = ''
+      if(cptCardFound == nbPaireOnGame * 2){
+
+      }
     }
   }
 }
 
 function initGame(nbPaires){
   gameBoard.innerHTML = ''
+  nbPaireOnGame = nbPaires
+  cptCardFound = 0
   let gameCards = []
   for (let i = 0; i< nbPaires; i++) {
     gameCards.push(cards[i], false)
