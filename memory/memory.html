@@ -17,38 +17,19 @@
       <a href="../PerfectGame/perfectGame.html">Perfect Game (en cour)</a>
     </div>
 
-    <div id="gameBoard">
-      <div class="card hidden" id='0' data-image="as">
-        <img src="./assets/as.png" alt="as pique">
-      </div>
-      <div class="card hidden" id='1' data-image="king">
-        <img src="./assets/king.png" alt="king">
-      </div>
-      <div class="card hidden" id='2' data-image="kingPiq">
-        <img src="./assets/kingPiq.png" alt="king pique">
-      </div>
-      <div class="card hidden" id='3' data-image="as">
-        <img src="./assets/as.png" alt="as pique">
-      </div>
-      <div class="card hidden" id='4' data-image="king">
-        <img src="./assets/king.png" alt="king">
-      </div>
-      <div class="card hidden" id='5' data-image="kingPiq">
-        <img src="./assets/kingPiq.png" alt="king pique">
-      </div>
+    <h1>Memory</h1>
 
-      <!-- <div class="card hidden" data-image="kingtrefle">
-        <img src="./assets/kingtrefle.png" alt="king trèfle">
-      </div>
-      <div class="card hidden" data-image="queen">
-        <img src="./assets/queen.png" alt="queen">
-      </div>
-      <div class="card hidden" data-image="valet">
-        <img src="./assets/valet.png" alt="valet">
-      </div> -->
+    <div id="">
+      <label for="">Combien de cartes pour jouer ?</label>
+      <input id="nbCardInput" type="number" max="6" min="2" value="2">
+      <button id="playButton">Jouer</button>
+    </div>
+
+    <div id="gameBoard">
+      
     </div>
 
 
-    <script src="./memory.js"></script>
+    <script type="module" src="./memory.js"></script>
   </body>
 </html>

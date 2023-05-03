@@ -1,19 +1,18 @@
 let jeuTableau
-let allCards = document.querySelectorAll('.card')
 let cptClickCurrent = 0
 let cardClickedId
 const cards = ['king', 'queen', 'valet', 'as']
+const gameBoard = document.getElementById('gameBoard')
 
-// j'ajoute l'évènement du click sur toutes les cartes
-allCards.forEach(card => {
-  card.addEventListener('click', () =>{
-    clickOnCardEvent(card)
-  })
+document.getElementById('playButton').addEventListener('click', () => {
+  let nbCardInput = document.getElementById('nbCardInput')
+  initGame(nbCardInput.value)
 })
 
 
 // fonction qui gère le click sur une carte
 function clickOnCardEvent(card){
+  let allCards = document.querySelectorAll('.card')
   if(card.classList.contains('finded')){
     return
   }
@@ -41,6 +40,7 @@ function clickOnCardEvent(card){
     //2eme click, je verifie si image à été trouver
     if(cardClickedId == card.id){
       cptClickCurrent = 1
+      return
     }
     else {
       card.classList.remove('hidden')
@@ -50,7 +50,7 @@ function clickOnCardEvent(card){
           if(card.classList.contains('hidden')){
               //c'est une carte caché
           }
-          else{
+          else if(!card.classList.contains('finded')){
             card.classList.add('finded')
           }
         })
@@ -62,7 +62,44 @@ function clickOnCardEvent(card){
 }
 
 function initGame(nbPaires){
-  for()
+  gameBoard.innerHTML = ''
+  let gameCards = []
+  for (let i = 0; i< nbPaires; i++) {
+    gameCards.push(cards[i], false)
+    gameCards.push(cards[i], false)
+  }
+
+  for(let i = 0; i < gameCards.length; i++){
+    // Générer un chiffre aléa
+    let cardIsPositionned = false
+    while(!cardIsPositionned){
+      let randomNumber = getRandomArbitrary(0, gameCards.length)
+      if(gameCards[randomNumber][1] == false){
+        cardIsPositionned = true
+        gameCards[randomNumber][1] = true
+        // Je peux positionner la carte dans le html
+        let cardHtml = getHtmlCodeCard(gameCards[randomNumber][0], i)
+        gameBoard.innerHTML += cardHtml
+        
+      }
+    }
+  }
+  // Ajouter évènement du click
+  // j'ajoute l'évènement du click sur toutes les cartes
+  let allCards = document.querySelectorAll('.card')
+  allCards.forEach(card => {
+    card.addEventListener('click', () =>{
+      clickOnCardEvent(card)
+    })
+  })
 }
 
-// seccion 3 reste 16:10
+function getRandomArbitrary(min, max) {
+  return Math.floor(Math.random() * (max - min) + min)
+}
+
+function getHtmlCodeCard(nomCard, id){
+  return `<div class="card hidden" id="${id}" data-image="${nomCard}">
+            <img src="./assets/${nomCard}.png">
+          </div>`
+}
