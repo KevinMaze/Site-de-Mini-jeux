@@ -63,13 +63,14 @@ function clickOnCardEvent(card){
       cptClickCurrent = 0
       cardClickedId = ''
       if(cptCardFound == nbPaireOnGame * 2){
-
+        confetti.launchAnimationConfetti()
       }
     }
   }
 }
 
 function initGame(nbPaires){
+  confetti.stopAnimationConfeti()
   gameBoard.innerHTML = ''
   nbPaireOnGame = nbPaires
   cptCardFound = 0
