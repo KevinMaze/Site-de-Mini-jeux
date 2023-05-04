@@ -7,7 +7,7 @@
 // Si gagner => recommencer le tour OK
 // Si perdu => fin de la partie OK
 // Sauvegarder le score en cookie
-import { Utils } from "../juste prix/lib/utils.js"
+import { Utils } from "../lib/utils.js"
 
 const plateau = document.getElementById('cardsPlateau')
 const elementToFindDiv = document.getElementById('elementToFind')
