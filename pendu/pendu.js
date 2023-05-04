@@ -21,7 +21,7 @@ buttonPlay.addEventListener('click', function() {
 
 function beginGame(){
   // Générer un mot au hasard
-  cptErreur.innerHTML = 0;
+  cptErreur = 0;
   worldToFindDiv.innerHTML = " "
   wordToFind = generateWord();
   wordToFindArray = Array.from(wordToFind);
@@ -52,14 +52,14 @@ function generateKeyboard(){
 
     lettreDiv.addEventListener("click", () => {
       if(checkLetterInWord(letter)){
-        // Afficher la lettre dans le mot masqué
-        let lineWord = document.getElementById("lineOfWord");
-        let allTdOfWord = lineWord.children;
-        Array.from(allTdOfWord).forEach(td => {
-          if(td.dataset.letter == letter){
-            td.innerHTML = letter;
-          }
-        });
+          //Afficher la lettre dans le mot masqué
+          let lineWord = document.getElementById("LineOfWord");
+          let allTdOfWord = lineWord.children;
+          Array.from(allTdOfWord).forEach(td => {
+              if(td.dataset.letter == letter){
+                  td.innerHTML = letter;
+              }
+          });
       }
       else{
         // Incrémenter le compteur d'erreur
@@ -67,7 +67,7 @@ function generateKeyboard(){
         document.getElementById("cptErreur").innerHTML = cptErreur;
         if(cptErreur >= 5){
           document.getElementById("cptErreur").innerHTML = "Perdu, vous avez fait plus de 5 erreurs";
-          let lineWord = document.getElementById("lineOfWord");
+          let lineWord = document.getElementById("LineOfWord");
           let allTdOfWord = lineWord.children;
           Array.from(allTdOfWord).forEach(td => {
             td.innerHTML = td.dataset.letter;

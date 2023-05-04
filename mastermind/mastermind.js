@@ -4,8 +4,8 @@
 -> Gérer début et fin de partie
 -> Ajouter d'autres éléments....
 */
-import { Utils } from "../juste prix/lib/utils.js"
-import { confetti } from "../juste prix/lib/confetti.js"
+import { Utils } from "../lib/utils.js"
+import { Confetti } from "../lib/confetti/confetti.js"
 
 const colors = ["red", "blue", "yellow", "pink"]
 const allSelectDiv = document.getElementById("allSelect")
@@ -18,6 +18,7 @@ document.getElementById("start").addEventListener("click", () => {
 
 
 function launchGame(){
+  Confetti.stopAnimationConfeti()
   setAleaColorTab()
   console.log(colorTabToFind)
   allSelectDiv.innerHTML = ""
@@ -60,23 +61,24 @@ function checkProposition(){
         }
       }
     }
-
-// ajout de la ligne de message de points
+    
+  // ajout de la ligne de message de points
   let lineResponse = document.createElement("div")
   lineResponse.innerText = `Bien placé : ${cptGoodPlace} | Mal placé : ${cptBadPlace}` 
   allSelectDiv.appendChild(lineResponse)
-
+  // on génère des nouveaux select
+  generateLigneSelect()
+    
   // si on a autant de bonne réponse que de case dans tableau = win
   if(cptGoodPlace == colorTabToFind.length){
-    confetti.launchAnimationConfetti();
+    Confetti.launchAnimationConfetti();
     let audio = new Audio("../juste prix/audio/oui.mp3");
     audio.play();
     setTimeout(() => {
-      confetti.stopAnimationConfeti();
+      Confetti.stopAnimationConfeti();
     }, 5000)
+    allSelectDiv.innerHTML ='Vous avez gagné !'
   }
-  // on génère des nouveaux select
-  generateLigneSelect()
 }
 
 function generateLigneSelect(){

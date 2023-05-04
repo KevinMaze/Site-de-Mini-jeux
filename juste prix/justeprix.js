@@ -1,8 +1,8 @@
 // Générer un chiffre en aléatoire
 // L'utilisateur fera des propositions
 // Continuer tant qu'il n'a pas la bonne proposition
-import { confetti } from "./lib/confetti.js"
-import { Utils } from "./lib/utils.js"
+import { confetti } from "../lib/confetti/confetti.js"
+import { Utils } from "../lib/utils.js"
 
 let numberToFind = 0;
 const resultDiv = document.getElementById("resultDiv");
@@ -46,6 +46,7 @@ function checkPropal(){
 }
 
 function launchGame() {
+  userPropalIntput.value = ''
   confetti.stopAnimationConfeti();
   numberToFind = Utils.getRandomInt(100);
   timeRest = 30;
@@ -88,7 +89,7 @@ function endGame(gagner) {
     audio.play();
     setTimeout(() => {
       confetti.stopAnimationConfeti();
-    }, 5000) 
+    }, 3000) 
   }
   else {
     alert("C'est la piquette Jack, tu sais pas jouer Jack, t'es mauvais...")
