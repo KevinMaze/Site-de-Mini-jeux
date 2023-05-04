@@ -1,14 +1,32 @@
 import { confetti } from '../juste prix/lib/confetti.js'
 
-let jeuTableau
+// let jeuTableau
 let cptClickCurrent = 0
 let cardClickedId
 let nbPaireOnGame
 let cptCardFound = 0
 const cards = ['king', 'queen', 'valet', 'as']
 const gameBoard = document.getElementById('gameBoard')
+const moreCardsButton = document.getElementById('moreCards')
+const lessCardsbutton = document.getElementById('lessCards')
+const playbutton = document.getElementById('playButton')
 
-document.getElementById('playButton').addEventListener('click', () => {
+moreCardsButton.addEventListener('click', () => {
+  let nbCardsInput = document.getElementById('nbCardInput')
+  if(nbCardsInput.value < 6){
+    nbCardsInput.value ++
+  }
+})
+
+lessCardsbutton.addEventListener('click', () => {
+  let nbCardsInput = document.getElementById('nbCardInput')
+  if(nbCardsInput.value > 2) {
+    nbCardsInput.value --
+  }
+})
+
+
+playbutton.addEventListener('click', () => {
   let nbCardInput = document.getElementById('nbCardInput')
   initGame(nbCardInput.value)
 })
