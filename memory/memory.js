@@ -1,36 +1,41 @@
-import { confetti } from '../juste prix/lib/confetti.js'
+import { Confetti } from '../lib/confetti/confetti.js'
 
 // let jeuTableau
 let cptClickCurrent = 0
 let cardClickedId
 let nbPaireOnGame
 let cptCardFound = 0
-const cards = ['king', 'queen', 'valet', 'as']
+let nbCoups = 0
+const cards = ['king', 'queen', 'valet', 'as', 'kingPiq', 'kingtrefle']
 const gameBoard = document.getElementById('gameBoard')
-const moreCardsButton = document.getElementById('moreCards')
-const lessCardsbutton = document.getElementById('lessCards')
-const playbutton = document.getElementById('playButton')
+const nbCoupCurrentNode = document.getElementById("nbCoupCurrent")
+const bestScoreNode = document.getElementById("bestScore")
+const bestScoreCookie = "bestScore"
+const allScoreCookie = "allScore"
+const avgScoreNode = document.getElementById("avgScore")
 
-moreCardsButton.addEventListener('click', () => {
+
+bestScoreNode.innerText = getCookie(bestScoreCookie)
+avgScoreNode.innerText = getAverageNbCoups()
+
+document.getElementById('playButton').addEventListener('click', () => {
+  let nbCardInput = document.getElementById('nbCardInput')
+  initGame(nbCardInput.value)
+})
+
+document.getElementById('moreCards').addEventListener('click', () => {
   let nbCardsInput = document.getElementById('nbCardInput')
   if(nbCardsInput.value < 6){
     nbCardsInput.value ++
   }
 })
 
-lessCardsbutton.addEventListener('click', () => {
+document.getElementById('lessCards').addEventListener('click', () => {
   let nbCardsInput = document.getElementById('nbCardInput')
   if(nbCardsInput.value > 2) {
     nbCardsInput.value --
   }
 })
-
-
-playbutton.addEventListener('click', () => {
-  let nbCardInput = document.getElementById('nbCardInput')
-  initGame(nbCardInput.value)
-})
-
 
 // fonction qui gère le click sur une carte
 function clickOnCardEvent(card){
@@ -78,24 +83,45 @@ function clickOnCardEvent(card){
           }
         })
       }
+      nbCoups++
       cptClickCurrent = 0
       cardClickedId = ''
-      if(cptCardFound == nbPaireOnGame * 2){
-        confetti.launchAnimationConfetti()
+
+      if(cptCardFound == nbPaireOnGame*2){
+        Confetti.launchAnimationConfeti()
+        // Partie terminé, maj cookie
+        let oldScore = getCookie(allScoreCookie)
+        let allScore = ""
+        if(oldScore != null){
+          allScore = oldScore + "." + nbCoups
+        }
+        else{
+          allScore = nbCoups
+        }
+
+        setCookie(allScoreCookie, allScore)
+        avgScoreNode.innerText = getAverageNbCoups()
+
+        if(nbCoups < getCookie(bestScoreCookie) || getCookie(bestScoreCookie) == null){
+          setCookie(bestScoreCookie, nbCoups)
+          bestScoreNode.innerText = nbCoups
+        }
       }
     }
   }
 }
 
 function initGame(nbPaires){
-  confetti.stopAnimationConfeti()
+  Confetti.stopAnimationConfeti()
   gameBoard.innerHTML = ''
   nbPaireOnGame = nbPaires
   cptCardFound = 0
+  nbCoups = 0
+  nbCoupCurrentNode.innerText = nbCoups
   let gameCards = []
   for (let i = 0; i< nbPaires; i++) {
-    gameCards.push(cards[i], false)
-    gameCards.push(cards[i], false)
+    gameCards.push([cards[i], false])
+    gameCards.push([cards[i], false])
   }
 
   for(let i = 0; i < gameCards.length; i++){
@@ -131,4 +157,39 @@ function getHtmlCodeCard(nomCard, id){
   return `<div class="card hidden" id="${id}" data-image="${nomCard}">
             <img src="./assets/${nomCard}.png">
           </div>`
+}
+
+function setCookie(name, value) {
+  let cookie = name + "=" + encodeURIComponent(value);
+  cookie += "; max-age=" + (100*24*60*60);
+  document.cookie = cookie;
+}
+
+function getCookie(name) {
+  let cookieArr = document.cookie.split(";");
+  for(let i = 0; i < cookieArr.length; i++) {
+      let cookiePair = cookieArr[i].split("=");
+      if(name == cookiePair[0].trim()) {
+          return decodeURIComponent(cookiePair[1]);
+      }
+  }
+  return null;
+}
+
+function getAverageNbCoups(){
+  let allscore = getCookie(allScoreCookie)
+  if(allscore != null){
+    let allScoreTab = allscore.split(".")
+    let sum = 0
+    let nbParties = 0
+    allScoreTab.forEach(score => {
+      sum += +score
+      nbParties ++
+    })
+    let moyenne = sum / nbParties
+    return Math.round(moyenne)
+  }
+  else{
+    return 0
+  }
 }
