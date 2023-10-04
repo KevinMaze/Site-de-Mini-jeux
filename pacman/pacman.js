@@ -129,7 +129,9 @@ function deplacerPacman(direction){
         if(checkDirectionWall(caseDestination)){
             pacmanDiv.classList.remove("pacman");
             caseDestination.classList.add("pacman");
-            checkPointEating(caseDestination);
+            if(!checkPacmanEatedByGhost(caseDestination)){;
+                checkPointEating(caseDestination);
+            }
         }
     }
 }
@@ -142,6 +144,15 @@ function checkDirectionWall(caseDestination){
         return false;
     }else{
         return true;
+    }
+}
+
+function checkPacmanEatedByGhost(caseToCheck){
+    let containsPacman = caseToCheck.classList.contains("pacman");
+    let containsGhost = caseToCheck.classList.contains("fantome");
+
+    if(containsPacman && containsGhost){
+        alert("Perdu");
     }
 }
 
@@ -193,41 +204,61 @@ function deplacerFantome(){
     let allFantome = document.querySelectorAll(".fantome");
     allFantome.forEach(fantome => {
         let goodDirectionFinded = false;
+        let fantomeCaseId = fantome.dataset.numeroCase;
 
-        // while(!goodDirectionFinded){
-            let direction = getRandomNumber(4);
-            let fantomeCaseId = fantome.dataset.numeroCase;
+        let allDirectionPossible = [
+            directions.Haut, 
+            directions.Bas, 
+            directions.Gauche, 
+            directions.Droite
+        ];
+
+        let allGoodDirection= [];
+
+        allDirectionPossible.forEach(direction => {
+            let isPossible = true;
+            let casePossible = getNumberCaseDestination(fantomeCaseId, direction);
+            if(!checkDirectionWall(casePossible)){
+                isPossible = false;
+            }
+            if(checkFantomeCollision(casePossible)){
+                isPossible = false;
+            }
+            if(isPossible){
+                allGoodDirection.push(direction);
+            }
+        });
+
+        if(allGoodDirection.length > 1){
+            //Plusieurs direction possible, j'élimine la direction d'où je viens (previousDirection)
             let previousDirection = fantome.dataset.previousDirection;
+            
+            allGoodDirection.forEach(goodDirection => {
+                if(!checkFantomenotGoingBack(parseInt(previousDirection), goodDirection)){
+                    const index = allGoodDirection.indexOf(goodDirection);
+                    if (index > -1) {
+                        allGoodDirection.splice(index, 1);
+                    }
+                }
+            });
+        }
 
-            if(previousDirection != null && previousDirection != undefined){
-                direction = previousDirection;
-            }
-            //Direction aléa, chaznger de direction si je suis sur un mur
-            console.log(direction);
-            caseDestination = getNumberCaseDestination(fantomeCaseId, direction);
-            if(!checkDirectionWall(caseDestination))
-            {
-                direction = getRandomNumber(4);
-            }
-            caseDestination = getNumberCaseDestination(fantomeCaseId, direction);
+        //J'ai un tableau allGoodDirection qui contient les directions possibles
+        // il ne reste plus qu'à choisir une direction au hasard
+        let elementofTable = getRandomNumber(allGoodDirection.length);
+        let direction = allGoodDirection[elementofTable];
+        caseDestination = getNumberCaseDestination(fantomeCaseId, direction);
 
-            // Vérifier si je peux aller dans la direction
-            if(checkDirectionWall(caseDestination) 
-            && !checkFantomeCollision(caseDestination)){
-                fantome.classList.remove("fantome");
-                fantome.removeAttribute("data-previous-direction");
-                caseDestination.classList.add("fantome");
-                caseDestination.dataset.previousDirection = direction;
-                goodDirectionFinded = true;
-            }
-        // }
+        fantome.classList.remove("fantome");
+        fantome.removeAttribute("data-previous-direction");
+        caseDestination.classList.add("fantome");
+        caseDestination.dataset.previousDirection = direction;
+        checkPacmanEatedByGhost(caseDestination);
+        goodDirectionFinded = true;
     })
 }
+    
 
-    // Si previous direction est 0, direction ne peut pas être 1
-    // Si previous direction est 1, direction ne peut pas être 0
-    // Si previous direction est 2, direction ne peut pas être 3
-    // Si previous direction est 3, direction ne peut pas être 2
 function checkFantomenotGoingBack(previousDirection, direction){
     let canMove = false;
     switch(previousDirection){
@@ -247,7 +278,7 @@ function checkFantomenotGoingBack(previousDirection, direction){
             // direction ne peut pas être 2
             direction == directions.Gauche ? canMove = false : canMove = true;
             break;
-            default: 
+        default: 
             canMove = true;
     }
     return canMove;
@@ -261,15 +292,15 @@ function getNumberCaseDestination(caseActuelle, direction){
         case directions.Haut :
             // Déplacer la case contenant le pacman de 1 vers le haut
             caseDestination = getCaseByIndex(caseActuelleInt - sizeCaseWidth);
-            break;
+        break;
         case directions.Gauche :
             // Déplacer la case contenant le pacman de 1 vers la gauche
             caseDestination = getCaseByIndex(caseActuelleInt - 1);
-            break;
+        break;
         case directions.Bas :
             // Déplacer la case contenant le pacman de 1 vers le bas
             caseDestination = getCaseByIndex(caseActuelleInt + sizeCaseWidth);
-            break;  
+        break;  
         case directions.Droite :
             // Déplacer la case contenant le pacman de 1 vers la droite
             caseDestination = getCaseByIndex(caseActuelleInt + 1);
