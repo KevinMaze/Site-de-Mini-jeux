@@ -1,0 +1,59 @@
+body{
+    background-color: black;
+    color: violet;
+}
+
+h1{
+    text-align: center;
+}
+
+#score{
+    text-align: center;
+}
+
+#game{
+    /* widthCase x 28*/
+    width: 560px;
+    /* heightCase x 28*/
+    height: 560px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+#game div{
+    width: 20px;
+    height: 20px;
+}
+
+#game div.mur{
+    background-color: blue;
+}
+#game div.point{
+    background-color: salmon;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 7px solid black;
+}
+#game div.fantome-area{
+    background-color: grey;
+}
+#game div.point-puissance{
+    background-color: green;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+#game div.pacman{
+    background-color: yellow;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+#game div.fantome{
+    background-color: red;
+    border-radius: 35%;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
