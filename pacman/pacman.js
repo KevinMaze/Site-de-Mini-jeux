@@ -6,7 +6,7 @@
     OK -  Pièce à manger
     OK -  Gérer les fantômes
     OK - Déplacer les fantômes (moyen, en aléatoire)
-    - Gérer les collisions avec les fantômes et pacman
+    OK -  Gérer les collisions avec les fantômes et pacman
     - Gérer les points de puissance (pacman peut manger les fantômes)
 */
 console.log('pacman.js loaded');
@@ -15,6 +15,7 @@ const gameDiv = document.getElementById('game');
 const sizeCaseWidth = 28;
 const scoreHtml = document.getElementById('score');
 let score = 0;
+let pacmanCanEatGhost = false;
 
 // Créer le plateau dynamique
 const layout = [
@@ -129,6 +130,20 @@ function deplacerPacman(direction){
         if(checkDirectionWall(caseDestination)){
             pacmanDiv.classList.remove("pacman");
             caseDestination.classList.add("pacman");
+            if(caseDestination.classList.contains("point-puissance")){
+                // Pacman peut manger les fantômes
+                caseDestination.classList.remove("point-puissance");
+                pacmanCanEatGhost = true;
+                console.log("Pacman peut manger les fantômes");
+                gameDiv.classList.add("power-mode");
+
+                // au bout de 5s pacman ne peut plus manger les fantômes
+                setTimeout(function(){
+                    pacmanCanEatGhost = false;
+                    gameDiv.classList.remove("power-mode");
+                    console.log("Pacman ne peut plus manger les fantômes");
+                }, 5000);
+            }
             if(!checkPacmanEatedByGhost(caseDestination)){;
                 checkPointEating(caseDestination);
             }
@@ -151,8 +166,16 @@ function checkPacmanEatedByGhost(caseToCheck){
     let containsPacman = caseToCheck.classList.contains("pacman");
     let containsGhost = caseToCheck.classList.contains("fantome");
 
-    if(containsPacman && containsGhost){
-        alert("Perdu");
+    if(containsPacman && containsGhost)
+    {
+        if(pacmanCanEatGhost){
+            caseToCheck.classList.remove("fantome");
+            // pacmanCanEatGhost = false;
+            // return false;
+        }
+        else{
+            alert("Perdu");
+        }
     }
 }
 
