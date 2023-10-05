@@ -45,19 +45,97 @@ h1{
     border: 2px solid black;
 }
 #game div.pacman{
-    background-color: yellow;
-    border-radius: 50%;
-    box-sizing: border-box;
-    border: 1px solid black;
-}
-
-#game div.fantome{
-    background-color: red;
-    border-radius: 35%;
+    background-image: url("assets/pacman_sprites.png");
+    background-position-x: 0px;
+    background-position-y: 0px;
+    animation: movePacman .6s infinite step-end;
     box-sizing: border-box;
     border: 2px solid black;
 }
 
-#game.power-mode div.fantome{
-    background-color: pink;
+#game div.fantome{
+    background-image: url("assets/pacman_sprites.png");
+    background-position-y: 96px;
+    background-position-x: -3px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    animation: 1s moveFantome infinite step-end;
 }
+
+#game div.fantome:nth-child(1n+1){
+    background-position-y: 96px;
+}
+#game div.fantome:nth-child(2n+2){
+    background-position-y: 80px;
+}
+#game div.fantome:nth-child(3n+3){
+    background-position-y: 64px;
+}
+#game div.fantome:nth-child(4n+4){
+    background-position-y: 48qqqqpx;
+}
+
+#game.power-mode div.fantome{
+    background-position-y: 96px;
+    background-position-x: -130px;
+    animation: noneanimationGhostEaten 1s infinite step-end;
+}
+
+.manette{
+    display : flex;
+    justify-content: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+@keyframes animationGhostEaten {
+    0%{
+        background-position-x: -130px;
+    }
+    100%{
+        background-position-x: -147px;
+    }
+}
+
+@keyframes movePacman{
+    0%{
+        background-position-x: 0px;
+    }
+    33%{
+        background-position-x: -16px;
+    }
+    66%{
+        background-position-x: -32px;
+    }
+}
+
+@keyframes moveFantome{
+    0%{
+        background-position-x: -3px;
+    }
+    15%{
+        background-position-x: -19px;
+    }
+    30%{
+        background-position-x: -35px;
+    }
+    45%{
+        background-position-x: -51px;
+    }
+    60%{
+        background-position-x: -67px;
+    }
+    75%{
+        background-position-x: -83px;
+    }
+    90%{
+        background-position-x: -99px;
+    }
+    100%{
+        background-position-x: -115px;
+    }
+
+}
+
+
+/* reste 14:12 min */
